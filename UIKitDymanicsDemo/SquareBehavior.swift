@@ -10,7 +10,13 @@ import UIKit
 
 class SquareBehavior: UIDynamicBehavior {
     
-    let gravity = UIGravityBehavior()
+    var animationSettings: AnimationSettings!
+    
+    lazy var gravity:UIGravityBehavior = {
+        let lazyGravity = UIGravityBehavior()
+        lazyGravity.magnitude = self.animationSettings.gravity
+        return lazyGravity
+    }()
     lazy var collider:UICollisionBehavior = {
         let lazyCollider = UICollisionBehavior()
         lazyCollider.translatesReferenceBoundsIntoBoundary = true
@@ -18,13 +24,14 @@ class SquareBehavior: UIDynamicBehavior {
         }()
     lazy var elacticityBehavior:UIDynamicItemBehavior = {
         let lazyBehavior = UIDynamicItemBehavior()
-        lazyBehavior.elasticity = 0.7
+        lazyBehavior.elasticity = self.animationSettings.elacticity
         lazyBehavior.allowsRotation = true
         return lazyBehavior
         }()
     
-    override init(){
+    init(settings: AnimationSettings){
         super.init()
+        self.animationSettings = settings
         addChildBehavior(gravity)
         addChildBehavior(collider)
         addChildBehavior(elacticityBehavior)
@@ -48,17 +55,6 @@ class SquareBehavior: UIDynamicBehavior {
     
     func addViewToCollider(view: UIView){
         collider.addItem(view)
-    }
-    
-    func addFlipper(flipperView:UIView, horizontalOffset:CGFloat, anchorPoint: CGPoint){
-        gravity.addItem(flipperView)
-        collider.addItem(flipperView)
-        
-        let attachmentBehavior = UIAttachmentBehavior(item: flipperView, offsetFromCenter: UIOffset(horizontal: horizontalOffset, vertical: flipperView.bounds.height/3.0), attachedToAnchor: anchorPoint)
-        attachmentBehavior.length = 0.0
-        attachmentBehavior.damping = 0.0
-        attachmentBehavior.frequency = 0.0
-        addChildBehavior(attachmentBehavior)
     }
     
     func removeSquare(squareView: UIView){

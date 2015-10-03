@@ -12,7 +12,6 @@ class AnimationViewController: UIViewController {
 
     @IBOutlet weak var animationView: UIView!
     let sizes:[CGSize] = [
-//        CGSize(width: 20.0, height: 20.0),
         CGSize(width: 30.0, height: 30.0)]
     let colors = [UIColor.redColor(),
         UIColor.orangeColor(),
@@ -21,8 +20,9 @@ class AnimationViewController: UIViewController {
         UIColor.blueColor()]
     var hammerView:UIView!
     var snap: UISnapBehavior?
-    
-    let squareBehavior = SquareBehavior()
+    var animationSettings: AnimationSettings!
+    var squareBehavior: SquareBehavior!
+    var rightCanonTurn = true
     
     lazy var animator: UIDynamicAnimator = {
         return UIDynamicAnimator(referenceView: self.animationView)
@@ -36,10 +36,11 @@ class AnimationViewController: UIViewController {
         return point
         }()
     
-    var rightCanonTurn = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        squareBehavior = SquareBehavior(settings: animationSettings)
+        print("Animation View Did Load")
         animator.addBehavior(squareBehavior)
         setupHammer()
     }
@@ -81,13 +82,13 @@ class AnimationViewController: UIViewController {
         squareBehavior.addViewToCollider(hammerView)
         
         let snap = UISnapBehavior(item: hammerView, snapToPoint: centerPoint)
-        snap.damping = 1.0
+        snap.damping = animationSettings.snapDamping
         animator.addBehavior(snap)
     }
     
     func createPushBehavior(angle: CGFloat)->UIPushBehavior {
         let pushUp = UIPushBehavior(items: [], mode: UIPushBehaviorMode.Instantaneous)
-        pushUp.magnitude = 0.8
+        pushUp.magnitude = animationSettings.pushMagnitude
         pushUp.angle = angle
         animator.addBehavior(pushUp)
         return pushUp
