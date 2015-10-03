@@ -46,6 +46,10 @@ class SquareBehavior: UIDynamicBehavior {
         elacticityBehavior.addItem(squareView)
     }
     
+    func addViewToCollider(view: UIView){
+        collider.addItem(view)
+    }
+    
     func addFlipper(flipperView:UIView, horizontalOffset:CGFloat, anchorPoint: CGPoint){
         gravity.addItem(flipperView)
         collider.addItem(flipperView)

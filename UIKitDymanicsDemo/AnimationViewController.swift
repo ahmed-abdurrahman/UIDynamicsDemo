@@ -19,7 +19,8 @@ class AnimationViewController: UIViewController {
         UIColor.yellowColor(),
         UIColor.greenColor(),
         UIColor.blueColor()]
-    
+    var hammerView:UIView!
+    var snap: UISnapBehavior?
     
     let squareBehavior = SquareBehavior()
     
@@ -36,9 +37,11 @@ class AnimationViewController: UIViewController {
         }()
     
     var rightCanonTurn = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         animator.addBehavior(squareBehavior)
+        setupHammer()
     }
     
     @IBAction func viewTap(sender: UITapGestureRecognizer) {
@@ -65,6 +68,21 @@ class AnimationViewController: UIViewController {
         animationView.addSubview(squareView)
         squareBehavior.addSquare(squareView)
         pushBehavior.addItem(squareView)
+    }
+    
+    func setupHammer(){
+        let centerPoint = CGPoint(x: animationView.bounds.midX, y: animationView.bounds.midY)
+        let frame = CGRect(origin: centerPoint, size: CGSize(width: 20.0, height: 20.0))
+        hammerView = UIView(frame: frame)
+        hammerView.backgroundColor = UIColor.blackColor()
+        hammerView.layer.cornerRadius = 10.0
+        
+        animationView.addSubview(hammerView)
+        squareBehavior.addViewToCollider(hammerView)
+        
+        let snap = UISnapBehavior(item: hammerView, snapToPoint: centerPoint)
+        snap.damping = 1.0
+        animator.addBehavior(snap)
     }
     
     func createPushBehavior(angle: CGFloat)->UIPushBehavior {
