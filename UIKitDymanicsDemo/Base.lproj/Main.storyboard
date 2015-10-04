@@ -21,9 +21,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to push beautiful colorful squares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXe-lL-C7c">
-                                        <rect key="frame" x="43" y="538" width="289" height="21"/>
+                                        <rect key="frame" x="43" y="538" width="289" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.64506392045454541" green="0.64506392045454541" blue="0.64506392045454541" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="727-Fx-UV5">
+                                        <rect key="frame" x="165.5" y="38" width="44" height="21.5"/>
+                                        <color key="backgroundColor" red="0.67487373737373735" green="0.67487373737373735" blue="0.67487373737373735" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -31,6 +38,7 @@
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="bXe-lL-C7c" secondAttribute="bottom" constant="44" id="73E-XV-ppV"/>
+                                    <constraint firstItem="727-Fx-UV5" firstAttribute="centerX" secondItem="NRU-xS-sva" secondAttribute="centerX" id="V33-JD-3IG"/>
                                     <constraint firstItem="bXe-lL-C7c" firstAttribute="centerX" secondItem="NRU-xS-sva" secondAttribute="centerX" id="f0L-4u-UqY"/>
                                 </constraints>
                                 <connections>
@@ -44,12 +52,14 @@
                             <constraint firstItem="NRU-xS-sva" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CrT-tK-ndM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NRU-xS-sva" secondAttribute="bottom" id="MIs-wC-fNj"/>
                             <constraint firstItem="NRU-xS-sva" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="O3h-g8-W86"/>
+                            <constraint firstItem="727-Fx-UV5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="38" id="jDB-iC-vO5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9Fa-GI-Afw"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="animationView" destination="NRU-xS-sva" id="llK-6a-4oo"/>
+                        <outlet property="collisionMessageLabel" destination="727-Fx-UV5" id="3It-1I-Lt2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
