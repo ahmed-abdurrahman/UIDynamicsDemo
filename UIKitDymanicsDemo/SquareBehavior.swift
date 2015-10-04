@@ -25,7 +25,11 @@ class SquareBehavior: UIDynamicBehavior {
     lazy var elacticityBehavior:UIDynamicItemBehavior = {
         let lazyBehavior = UIDynamicItemBehavior()
         lazyBehavior.elasticity = self.animationSettings.elacticity
-        lazyBehavior.allowsRotation = true
+        lazyBehavior.allowsRotation = self.animationSettings.allowRotation
+        lazyBehavior.density = self.animationSettings.squareDensity
+        lazyBehavior.friction = self.animationSettings.friction
+        lazyBehavior.resistance = self.animationSettings.resistance
+        
         return lazyBehavior
         }()
     

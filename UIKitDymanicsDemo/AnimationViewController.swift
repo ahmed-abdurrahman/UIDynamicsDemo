@@ -40,7 +40,6 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         squareBehavior = SquareBehavior(settings: animationSettings)
-        print("Animation View Did Load")
         animator.addBehavior(squareBehavior)
         setupHammer()
     }

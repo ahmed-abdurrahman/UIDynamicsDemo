@@ -14,6 +14,10 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var elacticitySlider: UISlider!
     @IBOutlet weak var pushMagnitudeSlider: UISlider!
     @IBOutlet weak var snapDampingSlider: UISlider!
+    @IBOutlet weak var densitySlider: UISlider!
+    @IBOutlet weak var frictionSlider: UISlider!
+    @IBOutlet weak var resistanceSlider: UISlider!
+    @IBOutlet weak var allowsRotationSwitch: UISwitch!
     
     var animationSettings = AnimationSettings()
     
@@ -32,6 +36,10 @@ class SettingsTableViewController: UITableViewController {
             animationSettings.elacticity = CGFloat(elacticitySlider.value)
             animationSettings.pushMagnitude = CGFloat(pushMagnitudeSlider.value)
             animationSettings.gravity = CGFloat(gravitySlider.value)
+            animationSettings.squareDensity = CGFloat(densitySlider.value)
+            animationSettings.friction = CGFloat(frictionSlider.value)
+            animationSettings.resistance = CGFloat(resistanceSlider.value)
+            animationSettings.allowRotation = allowsRotationSwitch.on
             animationsViewController?.animationSettings = animationSettings
         }
     }
@@ -42,6 +50,10 @@ struct AnimationSettings {
     var elacticity: CGFloat = 0.5
     var pushMagnitude: CGFloat = 0.5
     var snapDamping: CGFloat = 0.5
+    var squareDensity: CGFloat = 0.5
+    var friction: CGFloat = 0.5
+    var resistance: CGFloat = 0.5
+    var allowRotation: Bool = true
     
     /*
         density 0 to 1
