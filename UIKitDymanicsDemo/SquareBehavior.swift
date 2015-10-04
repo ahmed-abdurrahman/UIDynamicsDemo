@@ -57,14 +57,14 @@ class SquareBehavior: UIDynamicBehavior {
         elacticityBehavior.addItem(squareView)
     }
     
-    func addViewToCollider(view: UIView){
-        collider.addItem(view)
-    }
-    
     func removeSquare(squareView: UIView){
         gravity.removeItem(squareView)
         collider.removeItem(squareView)
         elacticityBehavior.removeItem(squareView)
+    }
+    
+    func addViewToCollider(view: UIView){
+        collider.addItem(view)
     }
     
     func setCollisionDelegate(delegate: UICollisionBehaviorDelegate){

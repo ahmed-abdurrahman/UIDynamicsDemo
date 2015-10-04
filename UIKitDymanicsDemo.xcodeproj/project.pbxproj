@@ -39,6 +39,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C80CB48B1BC0E49D003DDDC3 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C8EB5BF81BBFAEF90090AC67 /* AppDelegate.swift */,
+				C8EB5BFC1BBFAEF90090AC67 /* Main.storyboard */,
+				C8EB5BFF1BBFAEF90090AC67 /* Assets.xcassets */,
+				C8EB5C011BBFAEF90090AC67 /* LaunchScreen.storyboard */,
+				C8EB5C041BBFAEF90090AC67 /* Info.plist */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		C8EB5BEC1BBFAEF90090AC67 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +70,10 @@
 		C8EB5BF71BBFAEF90090AC67 /* UIKitDymanicsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				C8EB5BF81BBFAEF90090AC67 /* AppDelegate.swift */,
-				C8EB5BFC1BBFAEF90090AC67 /* Main.storyboard */,
-				C8EB5C0E1BBFB0910090AC67 /* AnimationViewController.swift */,
 				C80CB4891BC0084C003DDDC3 /* SettingsTableViewController.swift */,
+				C8EB5C0E1BBFB0910090AC67 /* AnimationViewController.swift */,
 				C8EB5C0A1BBFAFE30090AC67 /* SquareBehavior.swift */,
-				C8EB5BFF1BBFAEF90090AC67 /* Assets.xcassets */,
-				C8EB5C011BBFAEF90090AC67 /* LaunchScreen.storyboard */,
-				C8EB5C041BBFAEF90090AC67 /* Info.plist */,
+				C80CB48B1BC0E49D003DDDC3 /* SupportingFiles */,
 			);
 			path = UIKitDymanicsDemo;
 			sourceTree = "<group>";

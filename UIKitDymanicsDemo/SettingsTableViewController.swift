@@ -20,22 +20,19 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var allowsRotationSwitch: UISwitch!
     
     var animationSettings = AnimationSettings()
-    
-    
-    /*
-        Angular resistance
-        Allows Rotation
-    */
+    let animationSegue = "gotoAnimation"
+
     @IBAction func gotoAnimationView() {
-        self.performSegueWithIdentifier("gotoAnimation", sender: self)
+        self.performSegueWithIdentifier(animationSegue, sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "gotoAnimation" {
+        if segue.identifier == animationSegue {
             let animationsViewController = segue.destinationViewController as? AnimationViewController
             animationSettings.elacticity = CGFloat(elacticitySlider.value)
             animationSettings.pushMagnitude = CGFloat(pushMagnitudeSlider.value)
             animationSettings.gravity = CGFloat(gravitySlider.value)
+            animationSettings.snapDamping = CGFloat(snapDampingSlider.value)
             animationSettings.squareDensity = CGFloat(densitySlider.value)
             animationSettings.friction = CGFloat(frictionSlider.value)
             animationSettings.resistance = CGFloat(resistanceSlider.value)
@@ -54,13 +51,4 @@ struct AnimationSettings {
     var friction: CGFloat = 0.5
     var resistance: CGFloat = 0.5
     var allowRotation: Bool = true
-    
-    /*
-        density 0 to 1
-        friction 0 to 1
-        resistance 0 to 1
-        allowsRotation : Bool
-
-
-    */
 }

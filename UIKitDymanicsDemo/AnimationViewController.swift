@@ -11,19 +11,24 @@ import UIKit
 class AnimationViewController: UIViewController {
 
     @IBOutlet weak var animationView: UIView!
-    let sizes:[CGSize] = [
-        CGSize(width: 30.0, height: 30.0)]
+    
+    let squareSize:CGSize = CGSize(width: 30.0, height: 30.0)
     let colors = [UIColor.redColor(),
         UIColor.orangeColor(),
         UIColor.yellowColor(),
         UIColor.greenColor(),
         UIColor.blueColor()]
-    var hammerView:UIView!
+    
+    var snappingCircleView:UIView!
     var snap: UISnapBehavior?
     var animationSettings: AnimationSettings!
-    var squareBehavior: SquareBehavior!
     var rightCanonTurn = true
     
+    lazy var squareBehavior: SquareBehavior = {
+        let lazySquareBehavior = SquareBehavior(settings: self.animationSettings)
+        self.animator.addBehavior(lazySquareBehavior)
+        return lazySquareBehavior
+        }()
     lazy var animator: UIDynamicAnimator = {
         return UIDynamicAnimator(referenceView: self.animationView)
         }()
@@ -39,23 +44,24 @@ class AnimationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        squareBehavior = SquareBehavior(settings: animationSettings)
-        animator.addBehavior(squareBehavior)
-        setupHammer()
+        setupSnappingCircle()
     }
     
     @IBAction func viewTap(sender: UITapGestureRecognizer) {
+        pushNewSquare()
+    }
+    
+    func pushNewSquare(){
         let color = colors[Int(arc4random_uniform(UInt32(colors.count)))]
-        let size = sizes[Int(arc4random_uniform(UInt32(sizes.count)))]
         let frame:CGRect!
         let pushBehavior : UIPushBehavior!
         
         if rightCanonTurn {
-            frame = CGRect(origin: rightCanon, size: size)
+            frame = CGRect(origin: rightCanon, size: squareSize)
             pushBehavior = createPushBehavior(CGFloat(M_PI * 1.35))
             rightCanonTurn = false
         } else {
-            frame = CGRect(origin: leftCanon, size: size)
+            frame = CGRect(origin: leftCanon, size: squareSize)
             pushBehavior = createPushBehavior(CGFloat(M_PI * 1.65))
             rightCanonTurn = true
         }
@@ -70,17 +76,17 @@ class AnimationViewController: UIViewController {
         pushBehavior.addItem(squareView)
     }
     
-    func setupHammer(){
+    func setupSnappingCircle(){
         let centerPoint = CGPoint(x: animationView.bounds.midX, y: animationView.bounds.midY)
         let frame = CGRect(origin: centerPoint, size: CGSize(width: 20.0, height: 20.0))
-        hammerView = UIView(frame: frame)
-        hammerView.backgroundColor = UIColor.blackColor()
-        hammerView.layer.cornerRadius = 10.0
+        snappingCircleView = UIView(frame: frame)
+        snappingCircleView.backgroundColor = UIColor.blackColor()
+        snappingCircleView.layer.cornerRadius = 10.0
         
-        animationView.addSubview(hammerView)
-        squareBehavior.addViewToCollider(hammerView)
+        animationView.addSubview(snappingCircleView)
+        squareBehavior.addViewToCollider(snappingCircleView)
         
-        let snap = UISnapBehavior(item: hammerView, snapToPoint: centerPoint)
+        let snap = UISnapBehavior(item: snappingCircleView, snapToPoint: centerPoint)
         snap.damping = animationSettings.snapDamping
         animator.addBehavior(snap)
     }
