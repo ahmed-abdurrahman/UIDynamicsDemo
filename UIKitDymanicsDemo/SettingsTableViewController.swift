@@ -11,7 +11,7 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var gravitySlider: UISlider!
-    @IBOutlet weak var elacticitySlider: UISlider!
+    @IBOutlet weak var elasticitySlider: UISlider!
     @IBOutlet weak var pushMagnitudeSlider: UISlider!
     @IBOutlet weak var snapDampingSlider: UISlider!
     @IBOutlet weak var densitySlider: UISlider!
@@ -29,7 +29,7 @@ class SettingsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == animationSegue {
             let animationsViewController = segue.destinationViewController as? AnimationViewController
-            animationSettings.elacticity = CGFloat(elacticitySlider.value)
+            animationSettings.elasticity = CGFloat(elasticitySlider.value)
             animationSettings.pushMagnitude = CGFloat(pushMagnitudeSlider.value)
             animationSettings.gravity = CGFloat(gravitySlider.value)
             animationSettings.snapDamping = CGFloat(snapDampingSlider.value)
@@ -44,7 +44,7 @@ class SettingsTableViewController: UITableViewController {
 
 struct AnimationSettings {
     var gravity: CGFloat = 0.5
-    var elacticity: CGFloat = 0.5
+    var elasticity: CGFloat = 0.5
     var pushMagnitude: CGFloat = 0.5
     var snapDamping: CGFloat = 0.5
     var squareDensity: CGFloat = 0.5

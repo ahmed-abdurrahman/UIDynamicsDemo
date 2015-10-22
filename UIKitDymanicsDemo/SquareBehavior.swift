@@ -22,9 +22,9 @@ class SquareBehavior: UIDynamicBehavior {
         lazyCollider.translatesReferenceBoundsIntoBoundary = true
         return lazyCollider
         }()
-    lazy var elacticityBehavior:UIDynamicItemBehavior = {
+    lazy var elasticityBehavior:UIDynamicItemBehavior = {
         let lazyBehavior = UIDynamicItemBehavior()
-        lazyBehavior.elasticity = self.animationSettings.elacticity
+        lazyBehavior.elasticity = self.animationSettings.elasticity
         lazyBehavior.allowsRotation = self.animationSettings.allowRotation
         lazyBehavior.density = self.animationSettings.squareDensity
         lazyBehavior.friction = self.animationSettings.friction
@@ -38,7 +38,7 @@ class SquareBehavior: UIDynamicBehavior {
         self.animationSettings = settings
         addChildBehavior(gravity)
         addChildBehavior(collider)
-        addChildBehavior(elacticityBehavior)
+        addChildBehavior(elasticityBehavior)
     }
     
     func addBarrier(path: UIBezierPath, named name: String){
@@ -54,13 +54,13 @@ class SquareBehavior: UIDynamicBehavior {
     func addSquare(squareView:UIView){
         gravity.addItem(squareView)
         collider.addItem(squareView)
-        elacticityBehavior.addItem(squareView)
+        elasticityBehavior.addItem(squareView)
     }
     
     func removeSquare(squareView: UIView){
         gravity.removeItem(squareView)
         collider.removeItem(squareView)
-        elacticityBehavior.removeItem(squareView)
+        elasticityBehavior.removeItem(squareView)
     }
     
     func addViewToCollider(view: UIView){

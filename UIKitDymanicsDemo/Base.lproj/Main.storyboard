@@ -369,7 +369,7 @@
                     <connections>
                         <outlet property="allowsRotationSwitch" destination="qTe-Qx-JZF" id="k20-6i-RUw"/>
                         <outlet property="densitySlider" destination="Fer-7W-aLc" id="etI-f0-n2l"/>
-                        <outlet property="elacticitySlider" destination="AhO-ch-tg3" id="ztz-My-L2G"/>
+                        <outlet property="elasticitySlider" destination="AhO-ch-tg3" id="obo-q8-vaV"/>
                         <outlet property="frictionSlider" destination="2a2-ya-pgc" id="Lbx-Qp-Sab"/>
                         <outlet property="gravitySlider" destination="ooz-ZH-5ko" id="RVd-Sx-Pv3"/>
                         <outlet property="pushMagnitudeSlider" destination="MBu-TU-iMI" id="WIh-2f-x9C"/>
