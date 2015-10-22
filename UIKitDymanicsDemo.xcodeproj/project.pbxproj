@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C80CB48A1BC0084C003DDDC3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80CB4891BC0084C003DDDC3 /* SettingsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C87CC84E1BD756C400B6633F /* FallingSquareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87CC84D1BD756C400B6633F /* FallingSquareViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C8EB5BF91BBFAEF90090AC67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB5BF81BBFAEF90090AC67 /* AppDelegate.swift */; };
 		C8EB5BFE1BBFAEF90090AC67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8EB5BFC1BBFAEF90090AC67 /* Main.storyboard */; };
 		C8EB5C001BBFAEF90090AC67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8EB5BFF1BBFAEF90090AC67 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		C80CB4891BC0084C003DDDC3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		C87CC84D1BD756C400B6633F /* FallingSquareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FallingSquareViewController.swift; sourceTree = "<group>"; };
 		C8EB5BF51BBFAEF90090AC67 /* UIKitDymanicsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDymanicsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8EB5BF81BBFAEF90090AC67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8EB5BFD1BBFAEF90090AC67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				C80CB4891BC0084C003DDDC3 /* SettingsTableViewController.swift */,
 				C8EB5C0E1BBFB0910090AC67 /* AnimationViewController.swift */,
 				C8EB5C0A1BBFAFE30090AC67 /* SquareBehavior.swift */,
+				C87CC84D1BD756C400B6633F /* FallingSquareViewController.swift */,
 				C80CB48B1BC0E49D003DDDC3 /* SupportingFiles */,
 			);
 			path = UIKitDymanicsDemo;
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C87CC84E1BD756C400B6633F /* FallingSquareViewController.swift in Sources */,
 				C80CB48A1BC0084C003DDDC3 /* SettingsTableViewController.swift in Sources */,
 				C8EB5C0F1BBFB0910090AC67 /* AnimationViewController.swift in Sources */,
 				C8EB5C0B1BBFAFE30090AC67 /* SquareBehavior.swift in Sources */,
