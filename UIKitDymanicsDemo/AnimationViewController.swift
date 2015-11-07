@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnimationViewController: UIViewController, UICollisionBehaviorDelegate {
+class AnimationViewController: UIViewController, UICollisionBehaviorDelegate, UIDynamicAnimatorDelegate {
 
     @IBOutlet weak var animationView: UIView!
     @IBOutlet weak var collisionMessageLabel: UILabel! {
@@ -33,7 +33,9 @@ class AnimationViewController: UIViewController, UICollisionBehaviorDelegate {
     var rightCanonTurn = true
     
     lazy var animator: UIDynamicAnimator = {
-        return UIDynamicAnimator(referenceView: self.animationView)
+        let lazyDynamicAnimator = UIDynamicAnimator(referenceView: self.animationView)
+        lazyDynamicAnimator.delegate = self
+        return lazyDynamicAnimator
         }()
     lazy var squareBehavior: SquareBehavior = {
         let lazySquareBehavior = SquareBehavior(settings: self.animationSettings)
@@ -116,11 +118,11 @@ class AnimationViewController: UIViewController, UICollisionBehaviorDelegate {
         
         if (item1 as? UIView)?.tag == snappingCirlceTag || (item2 as? UIView)?.tag == snappingCirlceTag {
             let message = collisionMessages[Int(arc4random_uniform(UInt32(collisionMessages.count)))]
-            displayCollisionMessage(message)
+            displayMessage(message)
         }
     }
     
-    func displayCollisionMessage(message: String){
+    func displayMessage(message: String){
         if collisionMessageLabel.hidden {
             collisionMessageLabel.alpha = 0
             collisionMessageLabel.hidden = false
@@ -135,6 +137,10 @@ class AnimationViewController: UIViewController, UICollisionBehaviorDelegate {
                 })
             }
         }
+    }
+    
+    func dynamicAnimatorDidPause(animator: UIDynamicAnimator){
+        self.displayMessage("Stasis! The universe stopped moving.")
     }
 
 }
